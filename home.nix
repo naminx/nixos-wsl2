@@ -51,7 +51,6 @@
         lib
         libkrb5
         libva
-        llvmPackages_16
         makeWrapper
         newScope
         nspr
