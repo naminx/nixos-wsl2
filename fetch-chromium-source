@@ -12,7 +12,7 @@ if [ -f tainted-canvas.patch -a -f common-nix.patch ]; then
   wget -O - ${github} | tar -xzv --strip-components=5 -f - \
     nixpkgs-${nixver}/pkgs/applications/networking/browsers/chromium/
 
-  ln -s ../../tainted-canvas.patch chromium/patches
+  cp tainted-canvas.patch chromium/patches
 
-  patch -p 1 < common-nix.patch
+  patch -p 5 < common-nix.patch
 fi

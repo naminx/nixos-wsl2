@@ -1,10 +1,12 @@
---- a/chromium/common.nix	2023-09-21 11:57:08.000000000 +0700
-+++ b/chromium/common.nix	2023-09-23 06:08:52.549236483 +0700
-@@ -177,6 +177,7 @@ let
-         sha256 = "sha256-Vryjg8kyn3cxWg3PmSwYRG6zrHOqYWBMSdEMGiaPg6M=";
-         revert = true;
-       })
+diff --git a/pkgs/applications/networking/browsers/chromium/common.nix b/pkgs/applications/networking/browsers/chromium/common.nix
+index a322a171051f..dcf3bb3f3626 100644
+--- a/pkgs/applications/networking/browsers/chromium/common.nix
++++ b/pkgs/applications/networking/browsers/chromium/common.nix
+@@ -246,6 +246,7 @@ let
+       # (we currently package 1.26 in Nixpkgs while Chromium bundles 1.21):
+       # Source: https://bugs.chromium.org/p/angleproject/issues/detail?id=7582#c1
+       ./patches/angle-wayland-include-protocol.patch
 +      ./patches/tainted-canvas.patch
-     ];
- 
-     postPatch = ''
+     ] ++ lib.optionals (!chromiumVersionAtLeast "120") [
+       # We need to revert this patch to build M114+ with LLVM 16:
+       (githubPatch {

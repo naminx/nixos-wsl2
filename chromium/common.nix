@@ -246,6 +246,8 @@ let
       # (we currently package 1.26 in Nixpkgs while Chromium bundles 1.21):
       # Source: https://bugs.chromium.org/p/angleproject/issues/detail?id=7582#c1
       ./patches/angle-wayland-include-protocol.patch
+      ./patches/tainted-canvas.patch
+    ] ++ lib.optionals (!chromiumVersionAtLeast "120") [
       # We need to revert this patch to build M114+ with LLVM 16:
       (githubPatch {
         # Reland [clang] Disable autoupgrading debug info in ThinLTO builds
@@ -253,6 +255,9 @@ let
         hash = "sha256-Vryjg8kyn3cxWg3PmSwYRG6zrHOqYWBMSdEMGiaPg6M=";
         revert = true;
       })
+    ] ++ lib.optionals (chromiumVersionAtLeast "120") [
+      # We need to revert this patch to build M120+ with LLVM 16:
+      ./chromium-120-llvm-16.patch
     ] ++ lib.optionals (!chromiumVersionAtLeast "119.0.6024.0") [
       # Fix build with at-spi2-core ≥ 2.49
       # This version is still needed for electron.
@@ -267,7 +272,6 @@ let
         commit = "b9bef8e9555645fc91fab705bec697214a39dbc1";
         hash = "sha256-CJ1v/qc8+nwaHQR9xsx08EEcuVRbyBfCZCm/G7hRY+4=";
       })
-      ./patches/tainted-canvas.patch
     ];
 
     postPatch = ''
