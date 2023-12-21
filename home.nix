@@ -101,7 +101,6 @@
     wget
     zip
 
-    cinnamon.nemo-with-extensions
     (
       neovim.override {
         viAlias = true;
@@ -165,7 +164,7 @@
     statix # nix
     sqlfluff
     tflint
-    mcomix3
+    mcomix
     custom-chromium
   ];
 in {
@@ -181,7 +180,7 @@ in {
 
     sessionVariables = {
       PATH = "/home/${username}/.local/bin:$PATH";
-      DISPLAY = "_gateway:0";
+      DISPLAY = ":0";
       # FIXME: set your preferred $EDITOR
       EDITOR = "${pkgs.neovim}/bin/nvim";
       # FIXME: set your preferred $SHELL
@@ -190,11 +189,12 @@ in {
       DONT_PROMPT_WSL_INSTALL = "1";
       # TIME_STYLE = "$(echo -e '+%e %b  %Y\n%e %b %H:%M')";
       TIME_STYLE = "+%e %b %Y %H:%M";
-      INPUT_METHOD = "fcitx";
-      QT_IM_MODULE = "fcitx";
-      GTK_IM_MODULE = "fcitx";
       XMODIFIERS = "@im=fcitx";
+      INPUT_METHOD = "fcitx";
       XIM_SERVERS = "fcitx";
+#     QT_IM_MODULE = "fcitx";
+#     GTK_IM_MODULE = "fcitx";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
     };
   };
 

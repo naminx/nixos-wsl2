@@ -58,7 +58,6 @@
   # services.openssh.enable = true;
 
   services = {
-    tumbler.enable = true;
     dbus.enable = true;
   };
 
