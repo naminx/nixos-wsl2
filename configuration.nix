@@ -84,13 +84,7 @@
     ];
   };
 
-  system = {
-    stateVersion = "23.05";
-    autoUpgrade = {
-      enable = true;
-      # allowReboot = true;
-    };
-  };
+  system.stateVersion = "23.11";
 
   wsl = {
     enable = true;
