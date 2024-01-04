@@ -3,10 +3,10 @@
   cls = "clear";
   cp = "cp -i";
   del = "rm -i";
-  dir = "lsd -lF --color=auto --group-directories-first";
-  dir_ = "/etc/profiles/per-user/namin/bin/ls -lF --color=auto --group-directories-first";
-  ls = "lsd -F --color=auto --group-directories-first";
-  ls_ = "/etc/profiles/per-user/namin/bin/ls -F --color=auto --group-directories-first";
+  dir = "lsd -lF --color=auto";
+  dir_ = "/etc/profiles/per-user/namin/bin/ls -lF --color=auto";
+  ls = "lsd -F --color=auto";
+  ls_ = "/etc/profiles/per-user/namin/bin/ls -F --color=auto";
   md = "mkdir";
   move = "mv -i";
   mv = "mv -i";
