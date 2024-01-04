@@ -11,25 +11,6 @@
     # FIXME: select your core binaries that you always want on the bleeding-edge
   ];
 
-  mcomix3 = with pkgs;
-    import ./mcomix3.nix {
-      inherit
-        stdenv
-        fetchFromGitHub
-        python3
-        python3Packages
-        wrapGAppsHook
-        gobject-introspection
-        gtk3
-        gdk-pixbuf
-        lib
-        unrar
-        p7zip
-        lhasa
-        mupdf
-        ;
-    };
-
   custom-chromium = with pkgs;
     import ./chromium/default.nix {
       inherit
@@ -68,14 +49,14 @@
 
   stable-packages = with pkgs; [
     # FIXME: customize these stable packages to your liking for the languages that you use
-    bat
+    bat # better bat
     bc
-    bottom
     coreutils
     curl
     du-dust
     dos2unix
-    fd
+    fcp # better cp
+    fd # better find
     ffmpeg
     findutils
     fx
@@ -88,11 +69,11 @@
     libguestfs
     mosh
     nomacs
-    # mcomix
+    mcomix
     procs
     rar
-    ripgrep
-    sd
+    rm-improved # rip: better rm
+    sd # better sed
     sqlite
     sqlitebrowser
     tree
@@ -164,7 +145,6 @@
     statix # nix
     sqlfluff
     tflint
-    mcomix
     custom-chromium
   ];
 in {
@@ -254,14 +234,19 @@ in {
     };
 
     # FIXME: disable whatever you don't want
-    # fzf.enable = true;
-    # fzf.enableZshIntegration = true;
+    # better top
+    bottom.enable = true;
+    fzf.enable = true;
+    fzf.enableFishIntegration = true;
+    # better ls
     lsd.enable = true;
     # lsd.enableAliases = true;
-    # zoxide.enable = true;
-    # zoxide.enableZshIntegration = true;
-    # broot.enable = true;
-    # broot.enableZshIntegration = true;
+    zoxide.enable = true;
+    zoxide.enableFishIntegration = true;
+    broot.enable = true;
+    broot.enableFishIntegration = true;
+    # better grep
+    ripgrep.enable = true;
 
     # direnv.enable = true;
     # direnv.enableZshIntegration = true;
